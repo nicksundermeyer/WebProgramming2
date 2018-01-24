@@ -13,3 +13,7 @@ router.get('/:id', users.findOne);
 
 // register POST routes for /users API
 router.post('/', users.createUser);
+
+// register PUT and DELETE routes for /users API
+router.put('/:id', users.updateUser);
+router.delete('/:id', users.removeUser);
