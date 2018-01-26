@@ -1,5 +1,5 @@
 import express from 'express';
-import * as users from './users';
+import * as controller from './users.controller';
 
 // create new router
 let router = express.Router();
@@ -8,12 +8,12 @@ let router = express.Router();
 export { router };
 
 // register GET routes for /users API
-router.get('/', users.listContents);
-router.get('/:id', users.findOne);
+router.get('/', controller.index);
+router.get('/:id', controller.show);
 
 // register POST routes for /users API
-router.post('/', users.createUser);
+router.post('/', controller.create);
 
 // register PUT and DELETE routes for /users API
-router.put('/:id', users.updateUser);
-router.delete('/:id', users.removeUser);
+router.put('/:id', controller.upsert);
+router.delete('/:id', controller.destroy);
