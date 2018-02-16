@@ -46,6 +46,9 @@ export function UserService($http) {
   var User = {
     getAllUsers() {
       return $http.get('/api/users/');
+    },
+    getUserByID(id) {
+      return $http.get('/api/users/' + id);
     }
   }
   return User;
