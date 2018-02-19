@@ -4,7 +4,7 @@ import * as controller from './recipes.controller';
 let router = express.Router();
 
 // GET methods
-// Basic get route for recipes with no input required. Returns a json object which contains all of the recipes that are currently in the database. If it fails, returns a 500 internal server error. 
+// Basic get route for recipes with no input required. Returns a json object which contains all of the recipes that are currently in the database. If it fails, returns a 500 internal server error, because we know that without arguments it must be a server problem. 
 router.get('/', controller.index);
 
 // Basic get route for reviews with no input required. Returns json object containing all reviews currently in the database. If it fails, returns 500 internal server error.

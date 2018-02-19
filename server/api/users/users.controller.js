@@ -58,7 +58,7 @@ export function update(req, res) {
   // Start by trying to find the user by its id
   User.findById(req.params.id)
     .exec()
-    // Update user and address
+    // Update user 
     .then(function (existingUser) {
       // If user exists, update all fields of the object
       if (existingUser) {
@@ -89,7 +89,7 @@ export function update(req, res) {
         res.json({ message: 'Not Found' });
       }
     })
-    // Error encountered during the save of the user or address
+    // Error encountered during the save of the user 
     .catch(function (err) {
       res.status(400);
       res.send(err);
@@ -119,7 +119,7 @@ export function destroy(req, res) {
         res.json({ message: 'Not Found' });
       }
     })
-    // Address or user delete failed
+    // user delete failed
     .catch(function (err) {
       res.status(400);
       res.send(err);

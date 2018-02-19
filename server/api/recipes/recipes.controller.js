@@ -58,7 +58,7 @@ export function update(req, res) {
   // Start by trying to find the recipe by its id
   Recipe.findById(req.params.recipeid)
     .exec()
-    // Update recipe and address
+    // Update recipe
     .then(function (existingRecipe) {
       // If recipe exists, update all fields of the object
       if (existingRecipe) {
@@ -92,7 +92,7 @@ export function update(req, res) {
         res.json({ message: 'Not Found' });
       }
     })
-    // Error encountered during the save of the recipe or address
+    // Error encountered during the save of the recipe
     .catch(function (err) {
       res.status(400);
       res.send(err);
@@ -122,7 +122,7 @@ export function destroy(req, res) {
         res.json({ message: 'Not Found' });
       }
     })
-    // Address or recipe delete failed
+    // Recipe delete failed
     .catch(function (err) {
       res.status(400);
       res.send(err);
@@ -176,6 +176,7 @@ export function createReview(req, res) {
       review = createdReview;
       return Recipe.findById(req.params.recipeid);
     })
+    // once found, add the id to the reviews list of the recipe and update the recipe
     .then(function (existingRecipe) {
       if (existingRecipe) {
         existingRecipe.reviews += review._id;
@@ -204,7 +205,7 @@ export function updateReview(req, res) {
   // Start by trying to find the review by its id
   Review.findById(req.params.reviewid)
     .exec()
-    // Update review and address
+    // Update review
     .then(function (existingReview) {
       // If review exists, update all fields of the object
       if (existingReview) {
@@ -234,7 +235,7 @@ export function updateReview(req, res) {
         res.json({ message: 'Not Found' });
       }
     })
-    // Error encountered during the save of the review or address
+    // Error encountered during the save of the review
     .catch(function (err) {
       res.status(400);
       res.send(err);
@@ -243,9 +244,11 @@ export function updateReview(req, res) {
 
 // Remove a review
 export function destroyReview(req, res) {
+  // find the review by id
   Review.findById(req.params.reviewid)
     .exec()
     .then(function (existingReview) {
+      // if found, remove
       if (existingReview) {
         return Promise.all([
           existingReview.remove()
@@ -255,10 +258,11 @@ export function destroyReview(req, res) {
       }
     })
     .then(function (deletedRecipe) {
+      // then find the recipe that the review pertains to
       return Recipe.findById(req.params.recipeid);
     })
     .then(function (existingRecipe) {
-      //update recipe to remove review
+      //update recipe to remove review from its 'reviews' array
       if (existingRecipe) {
         var array = existingRecipe.reviews;
         array.splice(array.indexOf(req.params.reviewid), 1);
@@ -282,7 +286,7 @@ export function destroyReview(req, res) {
         res.json({ message: 'Not Found' });
       }
     })
-    // Address or review delete failed
+    // Review delete failed
     .catch(function (err) {
       res.status(400);
       res.send(err);
