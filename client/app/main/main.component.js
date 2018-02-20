@@ -4,16 +4,14 @@ import routing from './main.routes';
 
 export class MainController {
   /*@ngInject*/
-  constructor($http, User) {
+  constructor($http, User, Recipe, Review) {
     this.$http = $http;
     this.User = User;
-    this.setData();
+    this.Recipe = Recipe;
+    this.Review = Review;
     this.getUserData();
-  }
-
-  setData() {
-    this.values = ['first', 'second', 'third'];
-    this.valueToSquare = 4;
+    this.getRecipeData();
+    this.getReviewData();
   }
 
   getUserData() {
@@ -22,6 +20,28 @@ export class MainController {
     this.User.getAllUsers()
       .then(response => {
         this.users = response.data;
+      })
+      .catch(error => {
+        console.error(error);
+      })
+  }
+  getRecipeData() {
+    // important to use => with promise chain to correctly scope function
+    // in this case, makes sure function is in same scope as Controller
+    this.Recipe.getAllRecipes()
+      .then(response => {
+        this.recipes = response.data;
+      })
+      .catch(error => {
+        console.error(error);
+      })
+  }
+  getReviewData() {
+    // important to use => with promise chain to correctly scope function
+    // in this case, makes sure function is in same scope as Controller
+    this.Review.getAllReviews()
+      .then(response => {
+        this.reviews = response.data;
       })
       .catch(error => {
         console.error(error);
@@ -37,6 +57,8 @@ export default angular.module('comp3705App.main', [ngRoute])
     controllerAs: 'mainController'
   })
   .service('User', UserService)
+  .service('Recipe', RecipeService)
+  .service('Review', ReviewService)
   .filter('Square', SquareFilter)
   .name;
 
@@ -52,6 +74,34 @@ export function UserService($http) {
     }
   }
   return User;
+}
+
+// function which provides service for retrieving recipes
+export function RecipeService($http) {
+  'ngInject';
+  var Recipe = {
+    getAllRecipes() {
+      return $http.get('/api/recipes');
+    },
+    getRecipeByID(id) {
+      return $http.get('/api/recipes/' + id);
+    }
+  }
+  return Recipe;
+}
+
+// function which provides service for retrieving reviews
+export function ReviewService($http) {
+  'ngInject';
+  var Review = {
+    getAllReviews() {
+      return $http.get('/api/recipes/reviews');
+    },
+    getReviewByID(recipeid, reviewid) {
+      return $http.get('/api/recipes/' + recipeid + '/reviews/' + reviewid);
+    }
+  }
+  return Review;
 }
 
 // filter to square number

@@ -19,11 +19,13 @@ import constants from './app.constants';
 import util from '../components/util/util.module';
 import about from './about/about.component';
 import userdetails from './userdetails/userdetails.component';
+import recipedetails from './recipedetails/recipedetails.component';
+import reviewdetails from './reviewdetails/reviewdetails.component';
 
 import './app.scss';
 
 angular.module('comp3705App', [ngCookies, ngResource, ngSanitize,
-  ngRoute, uiBootstrap, main, constants, util, about, userdetails
+  ngRoute, uiBootstrap, main, constants, util, about, userdetails, recipedetails, reviewdetails
 ])
   .config(routeConfig);
 

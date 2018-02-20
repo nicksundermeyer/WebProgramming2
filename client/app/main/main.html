@@ -2,55 +2,63 @@
   <div class="row">
     <div class="col-lg-12">
       <h1 class="page-header">Project 1: Server-side API Design using Node.js, Express.js, MongoDB, and Mongoose</h1>
-      <h3>Use Postman or another program to test API routes.</h3>
-      <h2>
-        <a ng-href="/about">About</a>
-      </h2>
+      <h4>Use Postman or another program to test API routes.</h4>
+      <h5>Description of API design: This API includes a list of users, which each have a unique username and email associated with them, as well as names, and can be accessed through /users. Recipes are under a separate route at /recipes, and contain descriptions, ingredients, instructions, and times for prep and cooking. They also have a list of reviews associated with them. Reviews are a separate resource within the recipe model, and are accessed by using /recipes/reviews to load all reviews or /recipes/recipeid/reviews/reviewid to access a specific review. Visit users/index.js and recipes/index.js for more specific description of routes, and their respective .model.js files for info on schema used.</h4>
+        <h5>Extra Credit: added GUI to view and navigate contents of users, recipes, and reviews using AngularJS. Implemented links between recipes and their reviews, and reviews and the user that created them, using the objectid framework used in the API.</h2>
+          <h4>
+            <a ng-href="/about">About</a>
+            </h2>
 
-      <!-- Old html used in previous labs, could be refactored to display correct data -->
-      <!-- <input ng-model="mainController.input" />
-      <h1>You entered: {{ mainController.input }}</h1>
-      <ul>
-        <li ng-repeat="value in mainController.values">{{ value }}</li>
-      </ul>
-      <hr size="5">
-      <h1>
-        {{ mainController.valueToSquare }} * {{ mainController.valueToSquare }} = {{mainController.valueToSquare | Square }}
-      </h1>
+            <!-- Old html used in previous labs, could be refactored to display correct data -->
+            <h2>Users</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>First Name</th>
+                  <th>Middle Name</th>
+                  <th>Last Name</th>
+                  <th>Username</th>
+                  <th>Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="user in mainController.users">
+                  <td>
+                    <a ng-href="/users/{{user._id}}">{{user._id}}</a>
+                  </td>
+                  <td>{{user.name.firstName}}</td>
+                  <td>{{user.name.middleName}}</td>
+                  <td>{{user.name.lastName}}</td>
+                  <td>{{user.username}}</td>
+                  <td>{{user.email}}</td>
+                </tr>
+              </tbody>
+            </table>
 
-      <hr size="5">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Age</th>
-            <th>First Name</th>
-            <th>Middle Name</th>
-            <th>Last Name</th>
-            <th>Address Line 1</th>
-            <th>Address Line 2</th>
-            <th>City</th>
-            <th>State</th>
-            <th>Zip</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="user in mainController.users">
-            <td>
-              <a ng-href="/users/{{user._id}}">{{user._id}}</a>
-            </td>
-            <td>{{user.age}}</td>
-            <td>{{user.name.firstName}}</td>
-            <td>{{user.name.middleName}}</td>
-            <td>{{user.name.lastName}}</td>
-            <td>{{user.address.addressLine1}}</td>
-            <td>{{user.address.addressLine2}}</td>
-            <td>{{user.address.city}}</td>
-            <td>{{user.address.state}}</td>
-            <td>{{user.address.zip}}</td>
-          </tr>
-        </tbody>
-      </table> -->
+            <h2>Recipes</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Prep Time</th>
+                  <th>Cook Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="recipe in mainController.recipes">
+                  <td>
+                    <a ng-href="/recipes/{{recipe._id}}">{{recipe._id}}</a>
+                  </td>
+                  <td>{{recipe.name}}</td>
+                  <td>{{recipe.description}}</td>
+                  <td>{{recipe.preptime}}</td>
+                  <td>{{recipe.cooktime}}</td>
+                </tr>
+              </tbody>
+            </table>
     </div>
   </div>
 </div>

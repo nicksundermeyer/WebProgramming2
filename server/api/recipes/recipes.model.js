@@ -21,16 +21,17 @@ let recipeSchema = Schema({
   reviews: { type: [ObjectId], required: false }
 });
 
+let Recipe = mongoose.model('Recipe', recipeSchema);
+
 // This is the review schema, which I included in the recipes module as an organizational choice, because reviews are tied to the recipes that they pertain to.
 // The description is a string, and it is required so the user has to write something for their review. Rating is a number between 1 and 5 stars, so I set a min and max for that. Date is a date object which is set automatically when creating/editing the review, so it is not required as an input. User is an objectid which needs to be input, so it is required.
 let reviewSchema = Schema({
   description: { type: String, required: true },
   rating: { type: Number, required: true, min: 1, max: 5 },
   date: { type: Date, required: false },
-  user: { type: ObjectId, required: true }
+  user: { type: ObjectId, required: true, ref: 'Recipe' }
 });
 
-let Recipe = mongoose.model('Recipe', recipeSchema);
 let Review = mongoose.model('Review', reviewSchema);
 
 // Export the two created models, Recipe and Review
