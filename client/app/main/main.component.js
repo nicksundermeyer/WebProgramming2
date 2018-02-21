@@ -4,8 +4,9 @@ import routing from './main.routes';
 
 export class MainController {
   /*@ngInject*/
-  constructor($http, User) {
+  constructor($http, User, $uibModal) {
     this.$http = $http;
+    this.$uibModal = $uibModal;
     this.User = User;
     this.setData();
     this.getUserData();
@@ -21,11 +22,21 @@ export class MainController {
     // in this case, makes sure function is in same scope as Controller
     this.User.getAllUsers()
       .then(response => {
-        this.users = response.data;
+        this.users = response;
       })
       .catch(error => {
         console.error(error);
       })
+  }
+
+  updateUser(user) {
+    this.$uibModal.open({
+      template: require('../../components/updateUserModal/updateUserModal.html'),
+      controller: 'updateUserController as updateUserController',
+      resolve: {
+        user: () => user
+      }
+    })
   }
 }
 
@@ -36,23 +47,8 @@ export default angular.module('comp3705App.main', [ngRoute])
     controller: MainController,
     controllerAs: 'mainController'
   })
-  .service('User', UserService)
   .filter('Square', SquareFilter)
   .name;
-
-// function which provides service for retrieving users
-export function UserService($http) {
-  'ngInject';
-  var User = {
-    getAllUsers() {
-      return $http.get('/api/users/');
-    },
-    getUserByID(id) {
-      return $http.get('/api/users/' + id);
-    }
-  }
-  return User;
-}
 
 // filter to square number
 export function SquareFilter() {
