@@ -38,6 +38,16 @@ export class MainController {
       }
     })
   }
+
+  createUser(user) {
+    this.$uibModal.open({
+      template: require('../../components/createUserModal/createUserModal.html'),
+      controller: 'createUserController as createUserController',
+      resolve: {
+        user: () => user
+      }
+    })
+  }
 }
 
 export default angular.module('comp3705App.main', [ngRoute])

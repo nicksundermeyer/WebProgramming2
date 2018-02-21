@@ -18,14 +18,15 @@ import main from './main/main.component';
 import constants from './app.constants';
 import util from '../components/util/util.module';
 import about from './about/about.component';
-import userdetails from './userdetails/userdetails.component';
+import userdetails from './userDetail/userDetail.component';
 import UserService from '../components/userservice/user.module';
-import usermodalController from '../components/updateUserModal/updateUserModal.controller';
+import updateUserModalController from '../components/updateUserModal/updateUserModal.controller';
+import createUserModalController from '../components/createUserModal/createUserModal.controller';
 
 import './app.scss';
 
 angular.module('comp3705App', [ngCookies, ngResource, ngSanitize,
-  ngRoute, uiBootstrap, main, constants, util, about, userdetails, UserService, usermodalController
+  ngRoute, uiBootstrap, main, constants, util, about, userdetails, UserService, updateUserModalController, createUserModalController
 ])
   .config(routeConfig);
 

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Lab 10 - Introduction to AngularJS</h1>
+      <h1 class="page-header">Lab 13: AngularUI Modal Dialogs</h1>
       <input ng-model="mainController.input" />
       <h1>You entered: {{ mainController.input }}</h1>
       <hr size="5">
@@ -13,32 +13,35 @@
       <hr size="5">
       <table class="table">
         <thead>
-        <tr>
-          <th>Id</th>
-          <th>Age</th>
-          <th>First Name</th>
-          <th>Middle Name</th>
-          <th>Last Name</th>
-          <th>Address Line 1</th>
-          <th>Address Line 2</th>
-          <th>City</th>
-          <th>State</th>
-          <th>Zip</th>
-        </tr>
+          <tr>
+            <th>Id</th>
+            <th>Age</th>
+            <th>First Name</th>
+            <th>Middle Name</th>
+            <th>Last Name</th>
+            <th>Address Line 1</th>
+            <th>Address Line 2</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip</th>
+          </tr>
         </thead>
+        <button ng-click="mainController.createUser()" type="button" class="btn btn-default">Create User</button>
         <tbody>
-        <tr ng-repeat="user in mainController.users">
-          <td><button ng-click="mainController.updateUser(user)" type="button" class="btn btn-default">{{user._id}}</button></td>
-          <td>{{user.age}}</td>
-          <td>{{user.name.firstName}}</td>
-          <td>{{user.name.middleName}}</td>
-          <td>{{user.name.lastName}}</td>
-          <td>{{user.address.addressLine1}}</td>
-          <td>{{user.address.addressLine2}}</td>
-          <td>{{user.address.city}}</td>
-          <td>{{user.address.state}}</td>
-          <td>{{user.address.zip}}</td>
-        </tr>
+          <tr ng-repeat="user in mainController.users">
+            <td>
+              <button ng-click="mainController.updateUser(user)" type="button" class="btn btn-default">{{user._id}}</button>
+            </td>
+            <td>{{user.age}}</td>
+            <td>{{user.name.firstName}}</td>
+            <td>{{user.name.middleName}}</td>
+            <td>{{user.name.lastName}}</td>
+            <td>{{user.address.addressLine1}}</td>
+            <td>{{user.address.addressLine2}}</td>
+            <td>{{user.address.city}}</td>
+            <td>{{user.address.state}}</td>
+            <td>{{user.address.zip}}</td>
+          </tr>
         </tbody>
       </table>
     </div>

@@ -1,6 +1,6 @@
 import angular from 'angular';
 
-export class UpdateUserController {
+export class CreateUserController {
   /*@ngInject*/
   constructor($uibModalInstance, User, user) {
     this.User = User;
@@ -13,9 +13,10 @@ export class UpdateUserController {
   }
 
   submitForm() {
-    this.User.updateUser(this.user)
+    console.log(this.User);
+    this.User.createUser(this.user)
       .then(result => {
-        this.formInfo = 'User successfully updated!';
+        this.formInfo = 'User (id=' + result._id + ') successfully created!';
       })
       .catch(err => {
         console.error(err);
@@ -24,8 +25,8 @@ export class UpdateUserController {
   }
 }
 
-export default angular.module('comp3705App.updateUserModal', [])
-  .controller('updateUserController', UpdateUserController)
+export default angular.module('comp3705App.createUserModal', [])
+  .controller('createUserController', CreateUserController)
   .config(['$qProvider', function ($qProvider) {
     $qProvider.errorOnUnhandledRejections(false);
   }])
