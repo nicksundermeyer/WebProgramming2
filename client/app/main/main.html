@@ -11,39 +11,36 @@
       <hr size="5">
       <h1>{{ mainController.valueToSquare }} * {{ mainController.valueToSquare }} = {{mainController.valueToSquare | Square }}</h1>
       <hr size="5">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Age</th>
-            <th>First Name</th>
-            <th>Middle Name</th>
-            <th>Last Name</th>
-            <th>Address Line 1</th>
-            <th>Address Line 2</th>
-            <th>City</th>
-            <th>State</th>
-            <th>Zip</th>
-          </tr>
-        </thead>
+      <p>
         <button ng-click="mainController.createUser()" type="button" class="btn btn-default">Create User</button>
-        <tbody>
-          <tr ng-repeat="user in mainController.users">
-            <td>
-              <button ng-click="mainController.updateUser(user)" type="button" class="btn btn-default">{{user._id}}</button>
-            </td>
-            <td>{{user.age}}</td>
-            <td>{{user.name.firstName}}</td>
-            <td>{{user.name.middleName}}</td>
-            <td>{{user.name.lastName}}</td>
-            <td>{{user.address.addressLine1}}</td>
-            <td>{{user.address.addressLine2}}</td>
-            <td>{{user.address.city}}</td>
-            <td>{{user.address.state}}</td>
-            <td>{{user.address.zip}}</td>
-          </tr>
-        </tbody>
-      </table>
+      </p>
+
+      <div ng-controller="AccordionDemoCtrl">
+        <script type="text/ng-template" id="group-template.html">
+                          <div class="panel-heading">
+                            <h4 class="panel-title" style="color:#fa39c3">
+                              <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading">
+                                <span uib-accordion-header ng-class="{'text-muted': isDisabled}">
+                                  {{heading}}
+                                </span>
+                              </a>
+                            </h4>
+                          </div>
+                          <div class="panel-collapse collapse" uib-collapse="!isOpen">
+                            <div class="panel-body" style="text-align: right" ng-transclude></div>
+                          </div>
+                        </script>
+
+        <uib-accordion ng-repeat="user in mainController.users" close-others="oneAtATime">
+          <div uib-accordion-group class="panel-default">
+            <uib-accordion-heading>
+              Name: {{user.name.firstName}} {{user.name.lastName}}
+              <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+            </uib-accordion-heading>
+            This content is straight in the template.
+          </div>
+        </uib-accordion>
+      </div>
     </div>
   </div>
 </div>
