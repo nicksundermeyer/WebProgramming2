@@ -7,21 +7,21 @@ let Schema = mongoose.Schema;
  */
 
 let ingredients = Schema({
-  name: {type: String, required: true},
-  amount: {type: String, required: true}
+  name: { type: String, required: true },
+  amount: { type: String, required: true }
 });
 
 // This is the main recipes schema
 let recipes = Schema({
-  name: {type: String, required: true},
-  description: {type: String, required: true},
-  image: {type: String, required: true},
-  prepTime: {type: Number, required: true},
-  cookTime: {type: Number, required: true},
-  directions: {type: [String], required: true},
-  ingredients: {type: [ingredients], required: true},
-  reviews: [{type: Schema.Types.ObjectId, ref: 'Review'}]
-});
+  name: { type: String, required: true },
+  description: { type: String, required: true },
+  image: { type: String, required: true },
+  prepTime: { type: Number, required: true },
+  cookTime: { type: Number, required: true },
+  directions: { type: [String], required: true },
+  ingredients: { type: [ingredients], required: true },
+  reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }]
+}, { usePushEach: true });
 
 /*
   This section creates interactive models from the defined schemas
@@ -33,4 +33,4 @@ let recipes = Schema({
 let Recipe = mongoose.model('Recipe', recipes);
 
 // Export the created model, Recipe
-export {Recipe};
+export { Recipe };
