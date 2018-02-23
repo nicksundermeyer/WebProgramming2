@@ -37,7 +37,17 @@
               Name: {{user.name.firstName}} {{user.name.lastName}}
               <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
             </uib-accordion-heading>
-            This content is straight in the template.
+            <p>ID: {{user._id}}</p>
+            <p>Age: {{user.age}}</p>
+            <p>First Name: {{user.name.firstName}}</p>
+            <p>Middle Name: {{user.nam.middleName}}</p>
+            <p>Last Name: {{user.name.lastName}}</p>
+            <p>Address Line 1: {{user.address.addressLine1}}</p>
+            <p>Address Line 2: {{user.address.addressLine2}}</p>
+            <p>City: {{user.address.city}}</p>
+            <p>State: {{user.address.state}}</p>
+            <p>ZIP: {{user.address.zip}}</p>
+            <button ng-click="mainController.updateUser(user)" type="button" class="btn btn-default">Update User</button>
           </div>
         </uib-accordion>
       </div>
