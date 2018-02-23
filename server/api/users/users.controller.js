@@ -1,128 +1,114 @@
 'use strict';
 
-import { User } from './users.model';
+import {User} from './users.model';
 
-// Find all Users
 export function index(req, res) {
   User.find()
     .exec()
-    // This then method will only be called if the query was successful, so no need to error check!
-    .then(function (users) {
+    .then(function(users) {
       res.json(users);
     })
-    .catch(function (err) {
+    .catch(function(err) {
       res.status(500);
-      res.send(err);
+      console.error(err);
+      res.send(err.toString());
     });
 }
 
-// Find details for one user
 export function show(req, res) {
   User.findById(req.params.id)
     .exec()
-    .then(function (existingUser) {
-      if (existingUser) {
-        // User was found by Id
+    .then(function(existingUser) {
+      if(existingUser) {
         res.status(200);
         res.json(existingUser);
       } else {
-        // User was not found
-        res.status(404);
-        res.json({ message: 'Not Found' });
+        return Promise.reject(new Error('User not found'));
       }
     })
-    .catch(function (err) {
-      res.status(400);
-      res.send(err);
+    .catch(function(err) {
+      if(err.message.toLowerCase().includes('not found')) {
+        res.status(404);
+        res.json({message: err.message});
+      } else {
+        res.status(400);
+        console.error(err);
+        res.send(err.toString());
+      }
     });
 }
 
-// Create a new user
 export function create(req, res) {
   let user = req.body;
-
   User.create(user)
-    .then(function (createdUser) {
+    .then(function(createdUser) {
       res.status(201);
       res.json(createdUser);
     })
-    .catch(function (err) {
+    .catch(function(err) {
       res.status(400);
-      res.send(err);
+      console.error(err);
+      res.send(err.toString());
     });
 }
 
-// Update a user
 export function update(req, res) {
-  var updatedUser;
-  // Start by trying to find the user by its id
   User.findById(req.params.id)
     .exec()
-    // Update user 
-    .then(function (existingUser) {
-      // If user exists, update all fields of the object
-      if (existingUser) {
+    .then(function(existingUser) {
+      if(existingUser) {
+        // Don't let users update their username
         existingUser.name.firstName = req.body.name.firstName;
-        existingUser.name.middleName = req.body.name.middleName;
         existingUser.name.lastName = req.body.name.lastName;
-        existingUser.username = req.body.username;
         existingUser.email = req.body.email;
-        // Set externally declared updatedUser so that later promise can return it
-        updatedUser = existingUser;
-        return Promise.all([
-          existingUser.increment().save()
-        ]);
+        return existingUser.increment().save();
       } else {
-        // User was not found
-        return null;
+        return Promise.reject(new Error('User not found'));
       }
     })
-    // This .then will be called after the Promise.all resolves, or be called with null if the user was not found
-    .then(function (savedObjects) {
-      // savedObjects should be defined if Promise.all was invoked (user was found)
-      if (savedObjects) {
-        res.status(200);
-        res.json(updatedUser);
-      } else {
-        // User was not found
+    .then(function(updateStatus) {
+      // update method does not return updated object, query for it here to return from API
+      return User.findById(req.params.id);
+    })
+    .then(function(savedUser) {
+      res.status(200);
+      res.json(savedUser);
+    })
+    .catch(function(err) {
+      console.log(err);
+      if(err.message.toLowerCase().includes('not found')) {
         res.status(404);
-        res.json({ message: 'Not Found' });
+        res.json({message: err.message});
+      } else {
+        res.status(400);
+        console.error(err);
+        res.send(err.toString());
       }
-    })
-    // Error encountered during the save of the user 
-    .catch(function (err) {
-      res.status(400);
-      res.send(err);
     });
 }
 
-// Remove a user
 export function destroy(req, res) {
   User.findById(req.params.id)
     .exec()
-    .then(function (existingUser) {
-      if (existingUser) {
-        return Promise.all([
-          existingUser.remove()
-        ]);
+    .then(function(existingUser) {
+      if(existingUser) {
+        return existingUser.remove();
       } else {
-        return null;
+        return Promise.reject(new Error('User not found'));
       }
     })
-    // Delete was successful
-    .then(function (deletedUser) {
-      if (deletedUser) {
-        res.status(204).send();
-      } else {
-        // User was not found
+    .then(function() {
+      res.status(204).send();
+    })
+    .catch(function(err) {
+      if(err.message.toLowerCase().includes('not found')) {
         res.status(404);
-        res.json({ message: 'Not Found' });
+        res.json({message: err.message});
+      } else {
+        res.status(400);
+        console.error(err);
+        res.send(err.toString());
       }
-    })
-    // user delete failed
-    .catch(function (err) {
-      res.status(400);
-      res.send(err);
     });
 }
 

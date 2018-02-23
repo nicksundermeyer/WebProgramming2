@@ -6,15 +6,12 @@ let Schema = mongoose.Schema;
   that will be used
  */
 
-let name = Schema({
-  firstName: {type: String, required: true},
-  lastName: {type: String, required: true}
-});
-
-let userSchema = Schema({
-  username: {type: String, required: true, unique: true},
-  email: {type: String, required: true, unique: true},
-  name: name
+// This is the main recipes schema
+let review = Schema({
+  description: {type: String, required: true},
+  rating: {type: Number, required: true},
+  createDate: {type: Date, required: true, default: Date.now},
+  user: {type: Schema.Types.ObjectId, ref: 'User'}
 });
 
 /*
@@ -24,7 +21,7 @@ let userSchema = Schema({
   NOTE since the nameSchema is embedded within userSchema, it does NOT have
   to be created as a model!
  */
-let User = mongoose.model('User', userSchema);
+let Review = mongoose.model('Review', review);
 
-// Export the created model, User
-export {User};
+// Export the created model, Recipes
+export {Review};
