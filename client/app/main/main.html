@@ -7,41 +7,49 @@
         <button ng-click="mainController.createUser()" type="button" class="btn btn-default">Create User</button>
       </p>
 
-      <div ng-controller="AccordionDemoCtrl">
-        <script type="text/ng-template" id="group-template.html">
-                          <div class="panel-heading">
-                            <h4 class="panel-title" style="color:#fa39c3">
-                              <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading">
-                                <span uib-accordion-header ng-class="{'text-muted': isDisabled}">
-                                  {{heading}}
-                                </span>
-                              </a>
-                            </h4>
-                          </div>
-                          <div class="panel-collapse collapse" uib-collapse="!isOpen">
-                            <div class="panel-body" style="text-align: right" ng-transclude></div>
-                          </div>
-                        </script>
-
-        <uib-accordion ng-repeat="user in mainController.users" close-others="oneAtATime">
-          <div uib-accordion-group class="panel-default">
-            <uib-accordion-heading>
-              Name: {{user.name.firstName}} {{user.name.lastName}}
-              <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
-            </uib-accordion-heading>
-            <p>ID: {{user._id}}</p>
-            <p>Age: {{user.age}}</p>
-            <p>First Name: {{user.name.firstName}}</p>
-            <p>Middle Name: {{user.nam.middleName}}</p>
-            <p>Last Name: {{user.name.lastName}}</p>
-            <p>Address Line 1: {{user.address.addressLine1}}</p>
-            <p>Address Line 2: {{user.address.addressLine2}}</p>
-            <p>City: {{user.address.city}}</p>
-            <p>State: {{user.address.state}}</p>
-            <p>ZIP: {{user.address.zip}}</p>
-            <button ng-click="mainController.updateUser(user)" type="button" class="btn btn-default">Update User</button>
-          </div>
-        </uib-accordion>
+      <table class="table table-responsive table-striped table-bordered">
+        <thead>
+          <tr>
+            <th class="col-xs-3 col-sm-1 col-md-1 col-lg-1">Id</th>
+            <th class="col-xs-3 col-sm-1 col-md-1 col-lg-1">Age</th>
+            <th class="col-xs-3 col-sm-2 col-md-2 col-lg-2">First Name</th>
+            <th class="hidden-xs hidden-sm col-md-1 col-lg-1">Middle Name</th>
+            <th class="col-xs-4 col-sm-2 col-md-2 col-lg-2">Last Name</th>
+            <th class="hidden-xs col-sm-1 col-md-1 col-lg-1">Address Line 1</th>
+            <th class="hidden-xs hidden-sm col-md-1 col-lg-1">Address Line 2</th>
+            <th class="hidden-xs col-sm-1 col-md-1 col-lg-1">City</th>
+            <th class="hidden-xs col-sm-1 col-md-1 col-lg-1">State</th>
+            <th class="hidden-xs col-sm-1 col-md-1 col-lg-1">Zip</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="user in mainController.users">
+            <td class="col-xs-3 col-sm-1 col-md-1 col-lg-1">
+              <button ng-click="mainController.updateUser(user)" type="button" class="btn btn-default">{{user._id}}</button>
+            </td>
+            <td class="col-xs-3 col-sm-1 col-md-1 col-lg-1">{{user.age}}</td>
+            <td class="col-xs-3 col-sm-2 col-md-2 col-lg-2">{{user.name.firstName}}</td>
+            <td class="hidden-xs hidden-sm col-md-1 col-lg-1">{{user.name.middleName}}</td>
+            <td class="col-xs-3 col-sm-2 col-md-2 col-lg-2">{{user.name.lastName}}</td>
+            <td class="hidden-xs col-sm-1 col-md-1 col-lg-1">{{user.address.addressLine1}}</td>
+            <td class="hidden-xs hidden-sm col-md-1 col-lg-1">{{user.address.addressLine2}}</td>
+            <td class="hidden-xs col-sm-1 col-md-1 col-lg-1">{{user.address.city}}</td>
+            <td class="hidden-xs col-sm-1 col-md-1 col-lg-1">{{user.address.state}}</td>
+            <td class="hidden-xs col-sm-1 col-md-1 col-lg-1">{{user.address.zip}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1">Id: {{mainController.users[0]._id}}</div>
+        <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1">Age: {{mainController.users[0].age}}</div>
+        <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1">First Name: {{mainController.users[0].name.firstName}}</div>
+        <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1">Middle Name: {{mainController.users[0].name.middleName}}</div>
+        <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1">Last Name: {{mainController.users[0].name.lastName}}</div>
+        <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1">Address Line 1: {{mainController.users[0].address.addressLine1}}</div>
+        <div class="col-xs-12 col-sm-12 col-md-1 hidden-lg">Address Line 2: {{mainController.users[0].address.addressLine2}}</div>
+        <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1">City: {{mainController.users[0].address.city}}</div>
+        <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1">State: {{mainController.users[0].address.state}}</div>
+        <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1">ZIP: {{mainController.users[0].address.zip}}</div>
       </div>
     </div>
   </div>
