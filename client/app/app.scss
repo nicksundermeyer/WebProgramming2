@@ -1,5 +1,6 @@
 $icon-font-path: '/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+@import '~bootstrap-social/bootstrap-social.scss';
 $fa-font-path: '/assets/fonts/font-awesome/';
 @import '~font-awesome/scss/font-awesome';
 
@@ -18,5 +19,6 @@ $fa-font-path: '/assets/fonts/font-awesome/';
 
 // Component styles are injected through gulp
 /* inject:scss */
-@import '/main/main';
+@import 'admin/admin';
+@import '../components/oauth-buttons/oauth-buttons';
 /* endinject */
