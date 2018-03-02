@@ -95,7 +95,8 @@ export function ReviewService($http) {
   'ngInject';
   var Review = {
     getAllReviews() {
-      return $http.get('/api/recipes/reviews');
+      // won't actually work to get reviews, no route setup to get all reviews
+      return $http.get('/api/recipes/');
     },
     getReviewByID(recipeid, reviewid) {
       return $http.get('/api/recipes/' + recipeid + '/reviews/' + reviewid);
