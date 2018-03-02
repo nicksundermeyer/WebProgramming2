@@ -6,33 +6,33 @@
         <a ng-href="/about">About</a>
         </h2>
         <h2>Users</h2>
-        <table class="table">
+        <table class="table table-responsive table-striped">
           <thead>
             <tr>
-              <th>Id</th>
-              <th>First Name</th>
-              <th>Middle Name</th>
-              <th>Last Name</th>
-              <th>Username</th>
-              <th>Email</th>
+              <th class="hidden-xs col-sm-2">Id</th>
+              <th class="col-xs-4 col-sm-2">First Name</th>
+              <th class="hidden-xs col-sm-2">Middle Name</th>
+              <th class="col-xs-4 col-sm-2">Last Name</th>
+              <th class="col-xs-4 col-sm-2">Username</th>
+              <th class="hidden-xs col-sm-2">Email</th>
             </tr>
           </thead>
           <tbody>
             <tr ng-repeat="user in mainController.users">
-              <td>
+              <td class="hidden-xs col-sm-2">
                 <a ng-href="/users/{{user._id}}">{{user._id}}</a>
               </td>
-              <td>{{user.name.firstName}}</td>
-              <td>{{user.name.middleName}}</td>
-              <td>{{user.name.lastName}}</td>
-              <td>{{user.username}}</td>
-              <td>{{user.email}}</td>
+              <td class="col-xs-4 col-sm-2">{{user.name.firstName}}</td>
+              <td class="hidden-xs col-sm-2">{{user.name.middleName}}</td>
+              <td class="col-xs-4 col-sm-2">{{user.name.lastName}}</td>
+              <td class="col-xs-4 col-sm-2">{{user.username}}</td>
+              <td class="hidden-xs col-sm-2">{{user.email}}</td>
             </tr>
           </tbody>
         </table>
 
         <h2>Recipes</h2>
-        <table class="table">
+        <table class="table table-responsive table-striped">
           <thead>
             <tr>
               <th>Id</th>
