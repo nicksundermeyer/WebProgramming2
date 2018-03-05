@@ -59,8 +59,13 @@ export default angular.module('comp3705App.main', [ngRoute])
   .service('User', UserService)
   .service('Recipe', RecipeService)
   .service('Review', ReviewService)
-  .filter('Square', SquareFilter)
   .name;
+
+angular.module('ui.bootstrap.demo').controller('CollapseDemoCtrl', function ($scope) {
+  $scope.isNavCollapsed = true;
+  $scope.isCollapsed = false;
+  $scope.isCollapsedHorizontal = false;
+});
 
 // function which provides service for retrieving users
 export function UserService($http) {
@@ -103,12 +108,4 @@ export function ReviewService($http) {
     }
   }
   return Review;
-}
-
-// filter to square number
-export function SquareFilter() {
-  var squareFunction = function (value) {
-    return value * value;
-  }
-  return squareFunction;
 }

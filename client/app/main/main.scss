@@ -21,3 +21,15 @@
 .navbar-text {
   margin-left: 15px;
 }
+
+.horizontal-collapse {
+  height: 70px;
+}
+.navbar-collapse.in {
+  overflow-y: hidden;
+}
+
+[ng-click]
+{
+  cursor: pointer;
+}
