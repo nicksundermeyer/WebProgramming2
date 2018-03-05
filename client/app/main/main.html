@@ -32,24 +32,24 @@
         <table class="table table-responsive table-striped">
           <thead>
             <tr>
-              <th class="hidden-xs col-sm-2">Id</th>
-              <th class="col-xs-4 col-sm-2">First Name</th>
-              <th class="hidden-xs col-sm-2">Middle Name</th>
-              <th class="col-xs-4 col-sm-2">Last Name</th>
-              <th class="col-xs-4 col-sm-2">Username</th>
-              <th class="hidden-xs col-sm-2">Email</th>
+              <th class="hidden-xs hidden-sm col-md-2">Id</th>
+              <th class="col-xs-4 col-sm-3 col-md-2">First Name</th>
+              <th class="hidden-xs hidden-sm col-md-2">Middle Name</th>
+              <th class="col-xs-4 col-sm-3 col-md-2">Last Name</th>
+              <th class="col-xs-4 col-sm-3 col-md-2">Username</th>
+              <th class="hidden-xs col-sm-3 col-md-2">Email</th>
             </tr>
           </thead>
           <tbody>
             <tr ng-repeat="user in mainController.users">
-              <td class="hidden-xs col-sm-2">
+              <td class="hidden-xs hidden-sm col-md-2">
                 {{user._id}}
               </td>
-              <td class="col-xs-4 col-sm-2">{{user.name.firstName}}</td>
-              <td class="hidden-xs col-sm-2">{{user.name.middleName}}</td>
-              <td class="col-xs-4 col-sm-2">{{user.name.lastName}}</td>
-              <td class="col-xs-4 col-sm-2">{{user.username}}</td>
-              <td class="hidden-xs col-sm-2">{{user.email}}</td>
+              <td class="col-xs-4 col-sm-3 col-md-2">{{user.name.firstName}}</td>
+              <td class="hidden-xs hidden-sm col-md-2">{{user.name.middleName}}</td>
+              <td class="col-xs-4 col-sm-3 col-md-2">{{user.name.lastName}}</td>
+              <td class="col-xs-4 col-sm-3 col-md-2">{{user.username}}</td>
+              <td class="hidden-xs col-sm-3 col-md-2">{{user.email}}</td>
             </tr>
           </tbody>
         </table>
@@ -58,22 +58,20 @@
         <table class="table table-responsive table-striped">
           <thead>
             <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Prep Time</th>
-              <th>Cook Time</th>
+              <th class="hidden-xs hidden-sm col-md-2">Id</th>
+              <th class="col-xs-4 col-sm-4 col-md-2">Name</th>
+              <th class="col-xs-4 col-sm-2 col-md-2">Prep Time</th>
+              <th class="col-xs-4 col-sm-2 col-md-2">Cook Time</th>
+              <th class="hidden-xs col-sm-4 col-md-4">Description</th>
             </tr>
           </thead>
           <tbody>
             <tr ng-repeat="recipe in mainController.recipes">
-              <td>
-                <a ng-href="/recipes/{{recipe._id}}">{{recipe._id}}</a>
-              </td>
-              <td>{{recipe.name}}</td>
-              <td>{{recipe.description}}</td>
-              <td>{{recipe.preptime}}</td>
-              <td>{{recipe.cooktime}}</td>
+              <td class="hidden-xs hidden-sm col-md-2">{{recipe._id}}</td>
+              <td class="col-xs-4 col-sm-4 col-md-2">{{recipe.name}}</td>
+              <td class="col-xs-4 col-sm-2 col-md-2">{{recipe.prepTime}}</td>
+              <td class="col-xs-4 col-sm-2 col-md-2">{{recipe.cookTime}}</td>
+              <td class="hidden-xs col-sm-4 col-md-4">{{recipe.description}}</td>
             </tr>
           </tbody>
         </table>

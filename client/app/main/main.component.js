@@ -47,7 +47,7 @@ export class MainController {
   getRecipeData() {
     this.Recipe.getAllRecipes()
       .then(response => {
-        this.recipes = response;
+        this.recipes = response.data;
       })
       .catch(error => {
         console.error(error);
@@ -56,7 +56,7 @@ export class MainController {
   getReviewData() {
     this.Review.getAllReviews()
       .then(response => {
-        this.reviews = response;
+        this.reviews = response.data;
       })
       .catch(error => {
         console.error(error);
