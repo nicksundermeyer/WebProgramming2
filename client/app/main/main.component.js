@@ -38,7 +38,7 @@ export class MainController {
   getUserData() {
     this.User.getAllUsers()
       .then(response => {
-        this.users = respons;
+        this.users = response;
       })
       .catch(error => {
         console.error(error);
@@ -90,7 +90,6 @@ export default angular.module('comp3705App.main', [ngRoute])
   })
   .controller('CollapseDemoCtrl', CollapseDemoCtrl)
   .controller('LinkControl', LinkControl)
-  .service('User', UserService)
   .service('Recipe', RecipeService)
   .service('Review', ReviewService)
   .name;
