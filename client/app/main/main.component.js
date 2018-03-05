@@ -15,34 +15,48 @@ export class MainController {
     this.getReviewData();
   }
 
+  updateUser(user) {
+    this.$uibModal.open({
+      template: require('../../components/updateUserModal/updateUserModal.html'),
+      controller: 'updateUserController as updateUserController',
+      resolve: {
+        user: () => user
+      }
+    })
+  }
+
+  createUser(user) {
+    this.$uibModal.open({
+      template: require('../../components/createUserModal/createUserModal.html'),
+      controller: 'createUserController as createUserController',
+      resolve: {
+        user: () => user
+      }
+    })
+  }
+
   getUserData() {
-    // important to use => with promise chain to correctly scope function
-    // in this case, makes sure function is in same scope as Controller
     this.User.getAllUsers()
       .then(response => {
-        this.users = response.data;
+        this.users = respons;
       })
       .catch(error => {
         console.error(error);
       })
   }
   getRecipeData() {
-    // important to use => with promise chain to correctly scope function
-    // in this case, makes sure function is in same scope as Controller
     this.Recipe.getAllRecipes()
       .then(response => {
-        this.recipes = response.data;
+        this.recipes = response;
       })
       .catch(error => {
         console.error(error);
       })
   }
   getReviewData() {
-    // important to use => with promise chain to correctly scope function
-    // in this case, makes sure function is in same scope as Controller
     this.Review.getAllReviews()
       .then(response => {
-        this.reviews = response.data;
+        this.reviews = response;
       })
       .catch(error => {
         console.error(error);
@@ -80,20 +94,6 @@ export default angular.module('comp3705App.main', [ngRoute])
   .service('Recipe', RecipeService)
   .service('Review', ReviewService)
   .name;
-
-// function which provides service for retrieving users
-export function UserService($http) {
-  'ngInject';
-  var User = {
-    getAllUsers() {
-      return $http.get('/api/users/');
-    },
-    getUserByID(id) {
-      return $http.get('/api/users/' + id);
-    }
-  }
-  return User;
-}
 
 // function which provides service for retrieving recipes
 export function RecipeService($http) {

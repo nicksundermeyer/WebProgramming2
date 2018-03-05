@@ -26,6 +26,9 @@
       <h4>
         </h2>
         <h2>Users</h2>
+        <p>
+          <button ng-click="mainController.createUser()" type="button" class="btn btn-default">Create User</button>
+        </p>
         <table class="table table-responsive table-striped">
           <thead>
             <tr>
@@ -38,7 +41,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="user in mainController.users" ng-click="LinkControl.LinkUser(user)">
+            <tr ng-repeat="user in mainController.users">
               <td class="hidden-xs col-sm-2">
                 {{user._id}}
               </td>

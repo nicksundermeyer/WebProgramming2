@@ -21,11 +21,14 @@ import about from './about/about.component';
 import userdetails from './userdetails/userdetails.component';
 import recipedetails from './recipedetails/recipedetails.component';
 import reviewdetails from './reviewdetails/reviewdetails.component';
+import UserService from '../components/userservice/user.module';
+import updateUserModalController from '../components/updateUserModal/updateUserModal.controller';
+import createUserModalController from '../components/createUserModal/createUserModal.controller'
 
 import './app.scss';
 
 angular.module('comp3705App', [ngCookies, ngResource, ngSanitize,
-  ngRoute, uiBootstrap, main, constants, util, about, userdetails, recipedetails, reviewdetails
+  ngRoute, uiBootstrap, main, constants, util, about, userdetails, recipedetails, reviewdetails, UserService, updateUserModalController, createUserModalController
 ])
   .config(routeConfig);
 
