@@ -10,15 +10,12 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">A menu</a>
+            <a class="navbar-brand" href="/">Home</a>
           </div>
           <div class="collapse navbar-collapse" uib-collapse="isNavCollapsed">
             <ul class="nav navbar-nav">
               <li>
-                <a href="#">Link 1</a>
-              </li>
-              <li>
-                <a href="#">Link 2</a>
+                <a href="/about/">About</a>
               </li>
             </ul>
           </div>
@@ -27,7 +24,6 @@
 
       <h1 class="page-header">Project 2: Client-side SPA Design Using AngularJS, Bootstrap, and AngularUI</h1>
       <h4>
-        <a ng-href="/about">About</a>
         </h2>
         <h2>Users</h2>
         <table class="table table-responsive table-striped">
@@ -42,9 +38,9 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="user in mainController.users">
+            <tr ng-repeat="user in mainController.users" ng-click="LinkControl.LinkUser(user)">
               <td class="hidden-xs col-sm-2">
-                <a ng-href="/users/{{user._id}}">{{user._id}}</a>
+                {{user._id}}
               </td>
               <td class="col-xs-4 col-sm-2">{{user.name.firstName}}</td>
               <td class="hidden-xs col-sm-2">{{user.name.middleName}}</td>

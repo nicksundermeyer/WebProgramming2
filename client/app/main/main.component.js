@@ -4,8 +4,9 @@ import routing from './main.routes';
 
 export class MainController {
   /*@ngInject*/
-  constructor($http, User, Recipe, Review) {
+  constructor($uibModal, $http, User, Recipe, Review) {
     this.$http = $http;
+    this.$uibModal = $uibModal;
     this.User = User;
     this.Recipe = Recipe;
     this.Review = Review;
@@ -49,6 +50,23 @@ export class MainController {
   }
 }
 
+// creating bootstrap functions for collapse
+function CollapseDemoCtrl($scope) {
+  $scope.isNavCollapsed = true;
+  $scope.isCollapsed = false;
+  $scope.isCollapsedHorizontal = false;
+}
+
+function LinkControl($scope, $location) {
+  $scope.LinkUser = function (user) {
+    console.log('testing');
+    $location.url('/users/' + user._id);
+  }
+}
+
+LinkControl.$inject = ["$scope", "$location"];
+CollapseDemoCtrl.$inject = ["$scope"];
+
 export default angular.module('comp3705App.main', [ngRoute])
   .config(routing)
   .component('main', {
@@ -56,16 +74,12 @@ export default angular.module('comp3705App.main', [ngRoute])
     controller: MainController,
     controllerAs: 'mainController'
   })
+  .controller('CollapseDemoCtrl', CollapseDemoCtrl)
+  .controller('LinkControl', LinkControl)
   .service('User', UserService)
   .service('Recipe', RecipeService)
   .service('Review', ReviewService)
   .name;
-
-angular.module('ui.bootstrap.demo').controller('CollapseDemoCtrl', function ($scope) {
-  $scope.isNavCollapsed = true;
-  $scope.isCollapsed = false;
-  $scope.isCollapsedHorizontal = false;
-});
 
 // function which provides service for retrieving users
 export function UserService($http) {

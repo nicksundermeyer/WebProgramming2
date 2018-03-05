@@ -22,11 +22,12 @@
   margin-left: 15px;
 }
 
-.horizontal-collapse {
-  height: 70px;
-}
 .navbar-collapse.in {
   overflow-y: hidden;
+}
+
+.navbar{
+  border: none;
 }
 
 [ng-click]
