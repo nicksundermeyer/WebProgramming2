@@ -41,7 +41,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="user in mainController.users">
+            <tr ng-repeat="user in mainController.users" ng-controller="LinkControl" ng-click="LinkUser(user)">
               <td class="hidden-xs hidden-sm col-md-2">
                 {{user._id}}
               </td>
@@ -66,7 +66,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="recipe in mainController.recipes">
+            <tr ng-repeat="recipe in mainController.recipes" ng-controller="LinkControl" ng-click="LinkRecipe(recipe)">
               <td class="hidden-xs hidden-sm col-md-2">{{recipe._id}}</td>
               <td class="col-xs-4 col-sm-4 col-md-2">{{recipe.name}}</td>
               <td class="col-xs-4 col-sm-2 col-md-2">{{recipe.prepTime}}</td>
