@@ -73,11 +73,9 @@ function CollapseDemoCtrl($scope) {
 
 function LinkControl($scope, $location) {
   $scope.LinkUser = function (user) {
-    console.log('testing');
     $location.url('/users/' + user._id);
   }
   $scope.LinkRecipe = function (recipe) {
-    console.log('testing');
     $location.url('/recipes/' + recipe._id);
   }
 }

@@ -22,6 +22,13 @@ export function UserService($resource) {
           create: { method: 'POST' }
         });
       return createResource.create({ id: user._id }, user).$promise;
+    },
+    deleteUser(user) {
+      let deleteResource = $resource('/api/users/', null,
+        {
+          delete: { method: 'DELETE' }
+        });
+      return deleteResource.delete({ id: user._id }, user).$promise;
     }
   }
   return User;

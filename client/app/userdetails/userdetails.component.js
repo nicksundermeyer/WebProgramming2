@@ -6,17 +6,28 @@ import { UserService } from '../main/main.component';
 export class UserDetailsController {
   /*@ngInject*/
   // appconfig from shared.js
-  constructor($routeParams, User) {
+  constructor($uibModal, $routeParams, User) {
     this.id = $routeParams.id;
     this.User = User;
+    this.$uibModal = $uibModal;
 
-    this.User.getUserByID(this.id)
+    this.User.getUserById(this.id)
       .then(response => {
-        this.user = response.data;
+        this.user = response;
       })
       .catch(error => {
         console.error(error);
       })
+  }
+
+  deleteUser(user) {
+    this.$uibModal.open({
+      template: require('../../components/deleteUserModal/deleteUserModal.html'),
+      controller: 'deleteUserController as deleteUserController',
+      resolve: {
+        user: () => user
+      }
+    })
   }
 
   $onInit() { }

@@ -20,15 +20,15 @@ import util from '../components/util/util.module';
 import about from './about/about.component';
 import userdetails from './userdetails/userdetails.component';
 import recipedetails from './recipedetails/recipedetails.component';
-import reviewdetails from './reviewdetails/reviewdetails.component';
 import UserService from '../components/userservice/user.module';
 import updateUserModalController from '../components/updateUserModal/updateUserModal.controller';
-import createUserModalController from '../components/createUserModal/createUserModal.controller'
+import createUserModalController from '../components/createUserModal/createUserModal.controller';
+import deleteUserModalController from '../components/deleteUserModal/deleteUserModal.controller';
 
 import './app.scss';
 
 angular.module('comp3705App', [ngCookies, ngResource, ngSanitize,
-  ngRoute, uiBootstrap, main, constants, util, about, userdetails, recipedetails, reviewdetails, UserService, updateUserModalController, createUserModalController
+  ngRoute, uiBootstrap, main, constants, util, about, userdetails, recipedetails, UserService, updateUserModalController, createUserModalController, deleteUserModalController
 ])
   .config(routeConfig);
 
