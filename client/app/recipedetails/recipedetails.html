@@ -70,10 +70,11 @@
             <h4>Rating:
               <span uib-rating ng-model="rate" read-only="true"></span>
             </h4>
-            <h4>Date: {{review.date}}</h4>
+            <h4>Date: {{review.createDate | date:'MM/dd/yyyy HH:mm'}}</h4>
             <h4>User:
-              <a ng-href="/users/{{review.user}}">{{review.user.username}}</a>
+              <a ng-href="/users/{{review.user}}">{{review.user}}</a>
             </h4>
+            <button ng-click="recipeDetailsController.updateReview(recipeDetailsController.recipe, review)" type="button" class="btn btn-default">Edit Review</button>
           </div>
         </uib-accordion>
       </div>

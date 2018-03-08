@@ -31,11 +31,12 @@ import createRecipeModalController from '../components/createRecipeModal/createR
 
 import ReviewService from '../components/reviewservice/review.module'
 import createReviewModalController from '../components/createReviewModal/createReviewModal.controller';
+import updateReviewModalController from '../components/updateReviewModal/updateReviewModal.controller';
 
 import './app.scss';
 
 angular.module('comp3705App', [ngCookies, ngResource, ngSanitize,
-  ngRoute, uiBootstrap, main, constants, util, about, userdetails, recipedetails, UserService, updateUserModalController, createUserModalController, RecipeService, createRecipeModalController, updateRecipeModalController, ReviewService, createReviewModalController
+  ngRoute, uiBootstrap, main, constants, util, about, userdetails, recipedetails, UserService, updateUserModalController, createUserModalController, RecipeService, createRecipeModalController, updateRecipeModalController, ReviewService, createReviewModalController, updateReviewModalController
 ])
   .config(routeConfig);
 

@@ -41,6 +41,17 @@ export class RecipeDetailsController {
     })
   }
 
+  updateReview(recipe, review) {
+    this.$uibModal.open({
+      template: require('../../components/updateReviewModal/updateReviewModal.html'),
+      controller: 'updateReviewController as updateReviewController',
+      resolve: {
+        recipe: () => recipe,
+        review: () => review
+      }
+    })
+  }
+
 
   $onInit() { }
 

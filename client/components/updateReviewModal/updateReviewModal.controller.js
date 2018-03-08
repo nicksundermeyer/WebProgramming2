@@ -26,7 +26,7 @@ export class UpdateReviewController {
   }
 
   deleteReview() {
-    this.Review.deleteReview(this.review)
+    this.Review.deleteReview(this.recipe, this.review)
       .then(result => {
         this.formInfo = 'Review successfully deleted!';
       })
