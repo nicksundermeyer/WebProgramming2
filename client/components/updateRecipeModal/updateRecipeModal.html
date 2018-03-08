@@ -48,15 +48,15 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="age" class="col-xs-2 col-sm-2 control-label">Ingredients Name</label>
-          <div class="col-xs-10 col-sm-10">
-            <input id="Ingredients" name="Ingredients" required="required" ng-model="updateRecipeController.recipe.ingredients.name" class="form-control" />
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="age" class="col-xs-2 col-sm-2 control-label">Ingredients Amount</label>
-          <div class="col-xs-10 col-sm-10">
-            <input id="Ingredients" name="Ingredients" required="required" ng-model="updateRecipeController.recipe.ingredients.amount" class="form-control" />
+          <div class="col-xs-12 col-sm-12">
+
+            <label for="age" class="col-xs-2 col-sm-2 control-label">Ingredients:</label>
+            <br>
+            <br>
+
+            <input class="col-xs-12 col-md-6" id="Ingredients" name="Ingredients" ng-model="createRecipeController.recipe.ingredients.name" class="form-control" />
+            <input class="col-xs-12 col-md-6" id="Ingredients" name="Ingredients" ng-model="createRecipeController.recipe.ingredients.amount" class="form-control" />
+
           </div>
         </div>
       </div>

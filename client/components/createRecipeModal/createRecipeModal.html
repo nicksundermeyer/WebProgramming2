@@ -48,22 +48,31 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="age" class="col-xs-2 col-sm-2 control-label">Ingredients Name</label>
           <div class="col-xs-10 col-sm-10">
-            <input id="Ingredients" name="Ingredients" required="required" ng-model="createRecipeController.recipe.ingredients.name" class="form-control" />
+
+            <label for="age" class="col-xs-2 col-sm-2 control-label">Ingredients:</label>
+            <br>
+            <br>
+
+            <input class="col-xs-12 col-md-6" id="Ingredients" name="Ingredients" ng-model="createRecipeController.recipe.ingredients.name" class="form-control" />
+            <input class="col-xs-12 col-md-6" id="Ingredients" name="Ingredients" ng-model="createRecipeController.recipe.ingredients.amount" class="form-control" />
+
+            <!-- 
+              Attempting to create an array of ingredients from input, but could only get one working
+
+              I was getting an error on pushing which said that ingredients[0].name and .amount were empty, but in the json object I could see that it had a name and amount for both ingredients[0] and ingredients[1]. i couldn't figure out what this error was from so I just decided to only allow one ingredient to be created
+             -->
+
+            <!-- <div ng-repeat="i in [0, 1, 2, 3, 4]">
+              <input class="col-xs-12 col-md-6" id="Ingredients" name="Ingredients" ng-model="createRecipeController.recipe.ingredients[i].name" class="form-control" />
+              <input class="col-xs-12 col-md-6" id="Ingredients" name="Ingredients" ng-model="createRecipeController.recipe.ingredients[i].amount" class="form-control" />
+            </div> -->
           </div>
         </div>
-        <div class="form-group">
-          <label for="age" class="col-xs-2 col-sm-2 control-label">Ingredients Amount</label>
-          <div class="col-xs-10 col-sm-10">
-            <input id="Ingredients" name="Ingredients" required="required" ng-model="createRecipeController.recipe.ingredients.amount" class="form-control" />
-          </div>
+        <div class="modal-footer">
+          <button ng-click="createRecipeController.cancel()" type="button" class="btn btndefault">
+            Close</button>
+          <button type="submit" class="btn btn-primary" ng-click="createRecipeController.submitForm()">Create Recipe</button>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button ng-click="createRecipeController.cancel()" type="button" class="btn btndefault">
-          Close</button>
-        <button type="submit" class="btn btn-primary" ng-click="createRecipeController.submitForm()">Create Recipe</button>
-      </div>
   </form>
   </div>

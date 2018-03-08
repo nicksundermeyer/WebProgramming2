@@ -32,8 +32,8 @@
       <h4>Prep Time: {{recipeDetailsController.recipe.prepTime}}</h4>
       <h4>Cook Time: {{recipeDetailsController.recipe.cookTime}}</h4>
       <h4>Directions: {{recipeDetailsController.recipe.directions}}</h4>
-      <h4>Ingredients Name: {{recipeDetailsController.recipe.ingredients.name}}</h4>
-      <h4>Ingredients Amount: {{recipeDetailsController.recipe.ingredients.amount}}</h4>
+      <h4>Ingredients Name: {{recipeDetailsController.recipe.ingredients[0].name}}</h4>
+      <h4>Ingredients Amount: {{recipeDetailsController.recipe.ingredients[0].amount}}</h4>
 
       <button ng-click="recipeDetailsController.updateRecipe(recipeDetailsController.recipe)" type="button" class="btn btn-default">Edit Recipe</button>
       <button ng-click="recipeDetailsController.createReview(recipeDetailsController.recipe)" type="button" class="btn btn-default">Create Review</button>
