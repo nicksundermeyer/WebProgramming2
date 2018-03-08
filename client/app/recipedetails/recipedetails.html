@@ -36,6 +36,10 @@
       <h4>Ingredients Amount: {{recipeDetailsController.recipe.ingredients.amount}}</h4>
 
       <button ng-click="recipeDetailsController.updateRecipe(recipeDetailsController.recipe)" type="button" class="btn btn-default">Edit Recipe</button>
+      <button ng-click="recipeDetailsController.createReview(recipeDetailsController.recipe)" type="button" class="btn btn-default">Create Review</button>
+      <br>
+      <br>
+      <h4>Reviews</h4>
 
       <div ng-controller="AccordionDemoCtrl">
         <script type="text/ng-template" id="group-template.html">
@@ -63,7 +67,9 @@
             </uib-accordion-heading>
             <h4>ID: {{review._id}}</h4>
             <h4>Description: {{review.description}}</h4>
-            <h4>Rating: {{review.rating}}/5</h4>
+            <h4>Rating:
+              <span uib-rating ng-model="rate" read-only="true"></span>
+            </h4>
             <h4>Date: {{review.date}}</h4>
             <h4>User:
               <a ng-href="/users/{{review.user}}">{{review.user.username}}</a>

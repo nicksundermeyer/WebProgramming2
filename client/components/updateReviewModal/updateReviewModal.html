@@ -1,0 +1,70 @@
+<div class="modal-content">
+  <form id="updateReview" name="updateReview" role="form" class="form-horizontal">
+    <div class="modal-header">
+      <button type="button" ng-click="updateReviewController.cancel()" class="close">
+        <span aria-hidden="true">×</span>
+        <span class="sr-only">Close</span>
+      </button>
+      <h4 id="myModalLabel" class="modal-title">Updating review {{ updateReviewController.review._id }}</h4>
+    </div>
+    <div class="modal-body">
+      <div role="alert" ng-show="updateReviewController.formError" class="alert alert-danger">{{ updateReviewController.formError }}</div>
+      <div role="alert" ng-show="updateReviewController.formInfo" class="alert alert-info">{{ updateReviewController.formInfo }}</div>
+      <div class="form-group">
+        <label for="age" class="col-xs-2 col-sm-2 control-label">Name</label>
+        <div class="col-xs-10 col-sm-10">
+          <input id="Name" name="Name" ng-model="updateReviewController.review.name" class="form-control" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="age" class="col-xs-2 col-sm-2 control-label">Description</label>
+        <div class="col-xs-10 col-sm-10">
+          <input id="Description" name="Description" ng-model="updateReviewController.review.description" class="form-control" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="age" class="col-xs-2 col-sm-2 control-label">Picture</label>
+        <div class="col-xs-10 col-sm-10">
+          <input id="Picture" name="Picture" required="required" ng-model="updateReviewController.review.image" class="form-control" />
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-group">
+          <label for="age" class="col-xs-2 col-sm-2 control-label">Prep Time</label>
+          <div class="col-xs-10 col-sm-10">
+            <input id="Prep Time" name="Prep Time" required="required" ng-model="updateReviewController.review.prepTime" class="form-control" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="age" class="col-xs-2 col-sm-2 control-label">Cook Time</label>
+          <div class="col-xs-10 col-sm-10">
+            <input id="Cook Time" name="Cook Time" required="required" ng-model="updateReviewController.review.cookTime" class="form-control" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="age" class="col-xs-2 col-sm-2 control-label">Directions</label>
+          <div class="col-xs-10 col-sm-10">
+            <input id="Directions" name="Directions" required="required" ng-model="updateReviewController.review.directions" class="form-control" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="age" class="col-xs-2 col-sm-2 control-label">Ingredients Name</label>
+          <div class="col-xs-10 col-sm-10">
+            <input id="Ingredients" name="Ingredients" required="required" ng-model="updateReviewController.review.ingredients.name" class="form-control" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="age" class="col-xs-2 col-sm-2 control-label">Ingredients Amount</label>
+          <div class="col-xs-10 col-sm-10">
+            <input id="Ingredients" name="Ingredients" required="required" ng-model="updateReviewController.review.ingredients.amount" class="form-control" />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button ng-click="updateReviewController.cancel()" type="button" class="btn btndefault">
+          Close</button>
+        <button type="submit" class="btn btn-danger" ng-click="updateReviewController.deleteReview()">Delete Review</button>
+        <button type="submit" class="btn btn-primary" ng-click="updateReviewController.updateReview()">Update Review</button>
+      </div>
+  </form>
+  </div>

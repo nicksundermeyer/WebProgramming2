@@ -30,6 +30,17 @@ export class RecipeDetailsController {
     })
   }
 
+  createReview(recipe, review) {
+    this.$uibModal.open({
+      template: require('../../components/createReviewModal/createReviewModal.html'),
+      controller: 'createReviewController as createReviewController',
+      resolve: {
+        recipe: () => recipe,
+        review: () => review
+      }
+    })
+  }
+
 
   $onInit() { }
 

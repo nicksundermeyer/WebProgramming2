@@ -1,9 +1,12 @@
 import angular from 'angular';
 
-export class CreateRecipeController {
+export class CreateReviewController {
   /*@ngInject*/
-  constructor($uibModalInstance, Recipe) {
+  constructor($uibModalInstance, Review, Recipe, review, recipe) {
+    this.Review = Review;
     this.Recipe = Recipe;
+    this.review = review;
+    this.recipe = recipe;
     this.$uibModalInstance = $uibModalInstance;
   }
 
@@ -12,9 +15,9 @@ export class CreateRecipeController {
   }
 
   submitForm() {
-    this.Recipe.createRecipe(this.recipe)
+    this.Review.createReview(this.recipe, this.review)
       .then(result => {
-        this.formInfo = 'Recipe (id=' + result._id + ') successfully created!';
+        this.formInfo = 'Review (id=' + result._id + ') successfully created!';
       })
       .catch(err => {
         console.error(err);
@@ -23,8 +26,8 @@ export class CreateRecipeController {
   }
 }
 
-export default angular.module('comp3705App.createRecipeModal', [])
-  .controller('createRecipeController', CreateRecipeController)
+export default angular.module('comp3705App.createReviewModal', [])
+  .controller('createReviewController', CreateReviewController)
   .config(['$qProvider', function ($qProvider) {
     $qProvider.errorOnUnhandledRejections(false);
   }])
