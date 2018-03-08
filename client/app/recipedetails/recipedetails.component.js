@@ -6,18 +6,30 @@ import { RecipeService } from '../main/main.component';
 export class RecipeDetailsController {
   /*@ngInject*/
   // appconfig from shared.js
-  constructor($routeParams, Recipe) {
+  constructor($uibModal, $routeParams, Recipe) {
     this.id = $routeParams.id;
     this.Recipe = Recipe;
+    this.$uibModal = $uibModal;
 
-    this.Recipe.getRecipeByID(this.id)
+    this.Recipe.getRecipeById(this.id)
       .then(response => {
-        this.recipe = response.data;
+        this.recipe = response;
       })
       .catch(error => {
         console.error(error);
       })
   }
+
+  updateRecipe(recipe) {
+    this.$uibModal.open({
+      template: require('../../components/updateRecipeModal/updateRecipeModal.html'),
+      controller: 'updateRecipeController as updateRecipeController',
+      resolve: {
+        recipe: () => recipe
+      }
+    })
+  }
+
 
   $onInit() { }
 
@@ -82,5 +94,4 @@ export default angular.module('comp3705App.recipedetails', [ngRoute])
   })
   .controller('AccordionDemoCtrl', AccordionDemoCtrl)
   .controller('RatingDemoCtrl', RatingDemoCtrl)
-  .service('Recipe', RecipeService)
   .name;

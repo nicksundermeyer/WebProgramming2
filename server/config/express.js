@@ -17,14 +17,14 @@ import lusca from 'lusca';
 import config from './environment';
 import session from 'express-session';
 
-export default function(app) {
+export default function (app) {
   var env = app.get('env');
 
-  if(env === 'development' || env === 'test') {
+  if (env === 'development' || env === 'test') {
     app.use(express.static(path.join(config.root, '.tmp')));
   }
 
-  if(env === 'production') {
+  if (env === 'production') {
     app.use(favicon(path.join(config.root, 'client', 'favicon.ico')));
   }
 
@@ -54,7 +54,7 @@ export default function(app) {
    * Lusca - express server security
    * https://github.com/krakenjs/lusca
    */
-  if(env !== 'test' && env !== 'development' && !process.env.SAUCE_USERNAME) {
+  if (env !== 'test' && env !== 'development' && !process.env.SAUCE_USERNAME) {
     app.use(lusca({
       csrf: {
         angular: true
@@ -69,7 +69,7 @@ export default function(app) {
     }));
   }
 
-  if(env === 'development') {
+  if (env === 'development') {
     const webpackDevMiddleware = require('webpack-dev-middleware');
     const stripAnsi = require('strip-ansi');
     const webpack = require('webpack');
@@ -104,9 +104,9 @@ export default function(app) {
      * Reload all devices when bundle is complete
      * or send a fullscreen error message to the browser instead
      */
-    compiler.plugin('done', function(stats) {
+    compiler.plugin('done', function (stats) {
       console.log('webpack done hook');
-      if(stats.hasErrors() || stats.hasWarnings()) {
+      if (stats.hasErrors() || stats.hasWarnings()) {
         return browserSync.sockets.emit('fullscreen:message', {
           title: 'Webpack Error:',
           body: stripAnsi(stats.toString()),
@@ -117,7 +117,7 @@ export default function(app) {
     });
   }
 
-  if(env === 'development' || env === 'test') {
+  if (env === 'development' || env === 'test') {
     app.use(errorHandler()); // Error handler - has to be last
   }
 }

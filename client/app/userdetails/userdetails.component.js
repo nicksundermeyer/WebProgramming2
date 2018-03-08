@@ -30,16 +30,6 @@ export class UserDetailsController {
     })
   }
 
-  deleteUser(user) {
-    this.$uibModal.open({
-      template: require('../../components/deleteUserModal/deleteUserModal.html'),
-      controller: 'deleteUserController as deleteUserController',
-      resolve: {
-        user: () => user
-      }
-    })
-  }
-
   $onInit() { }
 
 }

@@ -1,11 +1,11 @@
 import angular from 'angular';
 
-export class DeleteUserController {
+export class CreateRecipeController {
   /*@ngInject*/
-  constructor($uibModalInstance, User, user) {
-    this.User = User;
+  constructor($uibModalInstance, Recipe, recipe) {
+    this.Recipe = Recipe;
+    this.recipe = recipe;
     this.$uibModalInstance = $uibModalInstance;
-    this.user = user;
   }
 
   cancel() {
@@ -13,9 +13,9 @@ export class DeleteUserController {
   }
 
   submitForm() {
-    this.User.deleteUser(this.user)
+    this.Recipe.createRecipe(this.recipe)
       .then(result => {
-        this.formInfo = 'User successfully deleted!';
+        this.formInfo = 'Recipe (id=' + result._id + ') successfully created!';
       })
       .catch(err => {
         console.error(err);
@@ -24,8 +24,8 @@ export class DeleteUserController {
   }
 }
 
-export default angular.module('comp3705App.deleteUserModal', [])
-  .controller('deleteUserController', DeleteUserController)
+export default angular.module('comp3705App.createRecipeModal', [])
+  .controller('createRecipeController', CreateRecipeController)
   .config(['$qProvider', function ($qProvider) {
     $qProvider.errorOnUnhandledRejections(false);
   }])

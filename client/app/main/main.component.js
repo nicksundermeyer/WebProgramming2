@@ -12,7 +12,7 @@ export class MainController {
     this.Review = Review;
     this.getUserData();
     this.getRecipeData();
-    this.getReviewData();
+    // this.getReviewData();
   }
 
   createUser(user) {
@@ -21,6 +21,16 @@ export class MainController {
       controller: 'createUserController as createUserController',
       resolve: {
         user: () => user
+      }
+    })
+  }
+
+  createRecipe(recipe) {
+    this.$uibModal.open({
+      template: require('../../components/createRecipeModal/createRecipeModal.html'),
+      controller: 'createRecipeController as createRecipeController',
+      resolve: {
+        recipe: () => recipe
       }
     })
   }
@@ -37,7 +47,7 @@ export class MainController {
   getRecipeData() {
     this.Recipe.getAllRecipes()
       .then(response => {
-        this.recipes = response.data;
+        this.recipes = response;
       })
       .catch(error => {
         console.error(error);
@@ -46,7 +56,7 @@ export class MainController {
   getReviewData() {
     this.Review.getAllReviews()
       .then(response => {
-        this.reviews = response.data;
+        this.reviews = response;
       })
       .catch(error => {
         console.error(error);
@@ -82,35 +92,4 @@ export default angular.module('comp3705App.main', [ngRoute])
   })
   .controller('CollapseDemoCtrl', CollapseDemoCtrl)
   .controller('LinkControl', LinkControl)
-  .service('Recipe', RecipeService)
-  .service('Review', ReviewService)
   .name;
-
-// function which provides service for retrieving recipes
-export function RecipeService($http) {
-  'ngInject';
-  var Recipe = {
-    getAllRecipes() {
-      return $http.get('/api/recipes');
-    },
-    getRecipeByID(id) {
-      return $http.get('/api/recipes/' + id);
-    }
-  }
-  return Recipe;
-}
-
-// function which provides service for retrieving reviews
-export function ReviewService($http) {
-  'ngInject';
-  var Review = {
-    getAllReviews() {
-      // won't actually work to get reviews, no route setup to get all reviews
-      return $http.get('/api/recipes/');
-    },
-    getReviewByID(recipeid, reviewid) {
-      return $http.get('/api/recipes/' + recipeid + '/reviews/' + reviewid);
-    }
-  }
-  return Review;
-}

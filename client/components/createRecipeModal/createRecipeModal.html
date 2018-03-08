@@ -1,0 +1,69 @@
+<div class="modal-content">
+  <form id="createUser" name="createUser" role="form" class="form-horizontal">
+    <div class="modal-header">
+      <button type="button" ng-click="createRecipeController.cancel()" class="close">
+        <span aria-hidden="true">×</span>
+        <span class="sr-only">Close</span>
+      </button>
+      <h4 id="myModalLabel" class="modal-title">Creating User</h4>
+    </div>
+    <div class="modal-body">
+      <div role="alert" ng-show="createRecipeController.formError" class="alert alert-danger">{{ createRecipeController.formError }}</div>
+      <div role="alert" ng-show="createRecipeController.formInfo" class="alert alert-info">{{ createRecipeController.formInfo }}</div>
+      <div class="form-group">
+        <label for="age" class="col-xs-2 col-sm-2 control-label">Name</label>
+        <div class="col-xs-10 col-sm-10">
+          <input id="Name" name="Name" ng-model="createRecipeController.recipe.name" class="form-control" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="age" class="col-xs-2 col-sm-2 control-label">Description</label>
+        <div class="col-xs-10 col-sm-10">
+          <input id="Description" name="Description" ng-model="createRecipeController.recipe.description" class="form-control" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="age" class="col-xs-2 col-sm-2 control-label">Picture</label>
+        <div class="col-xs-10 col-sm-10">
+          <input id="Picture" name="Picture" required="required" ng-model="createRecipeController.recipe.image" class="form-control" />
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-group">
+          <label for="age" class="col-xs-2 col-sm-2 control-label">Prep Time</label>
+          <div class="col-xs-10 col-sm-10">
+            <input id="Prep Time" name="Prep Time" required="required" ng-model="createRecipeController.recipe.prepTime" class="form-control" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="age" class="col-xs-2 col-sm-2 control-label">Cook Time</label>
+          <div class="col-xs-10 col-sm-10">
+            <input id="Cook Time" name="Cook Time" required="required" ng-model="createRecipeController.recipe.cookTime" class="form-control" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="age" class="col-xs-2 col-sm-2 control-label">Directions</label>
+          <div class="col-xs-10 col-sm-10">
+            <input id="Directions" name="Directions" required="required" ng-model="createRecipeController.recipe.directions" class="form-control" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="age" class="col-xs-2 col-sm-2 control-label">Ingredients Name</label>
+          <div class="col-xs-10 col-sm-10">
+            <input id="Ingredients" name="Ingredients" required="required" ng-model="createRecipeController.recipe.ingredients.name" class="form-control" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="age" class="col-xs-2 col-sm-2 control-label">Ingredients Amount</label>
+          <div class="col-xs-10 col-sm-10">
+            <input id="Ingredients" name="Ingredients" required="required" ng-model="createRecipeController.recipe.ingredients.amount" class="form-control" />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button ng-click="createRecipeController.cancel()" type="button" class="btn btndefault">
+          Close</button>
+        <button type="submit" class="btn btn-primary" ng-click="createRecipeController.submitForm()">Create Recipe</button>
+      </div>
+  </form>
+  </div>

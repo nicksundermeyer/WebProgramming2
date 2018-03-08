@@ -1,21 +1,21 @@
 import angular from 'angular';
 
-export class UpdateUserController {
+export class UpdateRecipeController {
   /*@ngInject*/
-  constructor($uibModalInstance, User, user) {
-    this.User = User;
+  constructor($uibModalInstance, Recipe, recipe) {
+    this.Recipe = Recipe;
     this.$uibModalInstance = $uibModalInstance;
-    this.user = user;
+    this.recipe = recipe;
   }
 
   cancel() {
     this.$uibModalInstance.dismiss('cancel');
   }
 
-  updateUser() {
-    this.User.updateUser(this.user)
+  updateRecipe() {
+    this.Recipe.updateRecipe(this.recipe)
       .then(result => {
-        this.formInfo = 'User successfully updated!';
+        this.formInfo = 'Recipe successfully updated!';
       })
       .catch(err => {
         console.error(err);
@@ -23,10 +23,10 @@ export class UpdateUserController {
       });
   }
 
-  deleteUser() {
-    this.User.deleteUser(this.user)
+  deleteRecipe() {
+    this.Recipe.deleteRecipe(this.recipe)
       .then(result => {
-        this.formInfo = 'User successfully deleted!';
+        this.formInfo = 'Recipe successfully deleted!';
       })
       .catch(err => {
         console.error(err);
@@ -35,8 +35,8 @@ export class UpdateUserController {
   }
 }
 
-export default angular.module('comp3705App.updateUserModal', [])
-  .controller('updateUserController', UpdateUserController)
+export default angular.module('comp3705App.updateRecipeModal', [])
+  .controller('updateRecipeController', UpdateRecipeController)
   .config(['$qProvider', function ($qProvider) {
     $qProvider.errorOnUnhandledRejections(false);
   }])

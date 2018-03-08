@@ -13,7 +13,6 @@ export class CreateUserController {
   }
 
   submitForm() {
-    console.log(this.User);
     this.User.createUser(this.user)
       .then(result => {
         this.formInfo = 'User (id=' + result._id + ') successfully created!';
