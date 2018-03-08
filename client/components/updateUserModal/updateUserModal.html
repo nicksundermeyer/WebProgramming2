@@ -11,12 +11,6 @@
       <div role="alert" ng-show="updateUserController.formError" class="alert alert-danger">{{ updateUserController.formError }}</div>
       <div role="alert" ng-show="updateUserController.formInfo" class="alert alert-info">{{ updateUserController.formInfo }}</div>
       <div class="form-group">
-        <label for="age" class="col-xs-2 col-sm-2 control-label">Age</label>
-        <div class="col-xs-10 col-sm-10">
-          <input id="age" name="age" required="required" ng-model="updateUserController.user.age" class="form-control" />
-        </div>
-      </div>
-      <div class="form-group">
         <label for="age" class="col-xs-2 col-sm-2 control-label">First Name</label>
         <div class="col-xs-10 col-sm-10">
           <input id="First Name" name="First Name" required="required" ng-model="updateUserController.user.name.firstName" class="form-control" />
@@ -35,39 +29,21 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="age" class="col-xs-2 col-sm-2 control-label">Address Line 1</label>
+        <label for="age" class="col-xs-2 col-sm-2 control-label">Username</label>
         <div class="col-xs-10 col-sm-10">
-          <input id="Address Line 1" name="Address Line 1" required="required" ng-model="updateUserController.user.address.addressLine1" class="form-control" />
+          <input id="Username" name="Username" required="required" ng-model="updateUserController.user.username" class="form-control" />
         </div>
       </div>
       <div class="form-group">
-        <label for="age" class="col-xs-2 col-sm-2 control-label">Address Line 2</label>
+        <label for="age" class="col-xs-2 col-sm-2 control-label">Email</label>
         <div class="col-xs-10 col-sm-10">
-          <input id="Address Line 2" name="Address Line 2" ng-model="updateUserController.user.address.addressLine2" class="form-control" />
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="age" class="col-xs-2 col-sm-2 control-label">City</label>
-        <div class="col-xs-10 col-sm-10">
-          <input id="City" name="City" required="required" ng-model="updateUserController.user.address.city" class="form-control" />
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="age" class="col-xs-2 col-sm-2 control-label">State</label>
-        <div class="col-xs-10 col-sm-10">
-          <input id="State" name="State" required="required" ng-model="updateUserController.user.address.state" class="form-control" />
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="age" class="col-xs-2 col-sm-2 control-label">ZIP</label>
-        <div class="col-xs-10 col-sm-10">
-          <input id="ZIP" name="ZIP" required="required" ng-model="updateUserController.user.address.zip" class="form-control" />
+          <input id="Email" name="Email" required="required" ng-model="updateUserController.user.email" class="form-control" />
         </div>
       </div>
     </div>
     <div class="modal-footer">
       <button ng-click="updateUserController.cancel()" type="button" class="btn btndefault">
-        Cancel</button>
+        Close</button>
       <button type="submit" class="btn btn-primary" ng-click="updateUserController.submitForm()">Update User</button>
     </div>
   </form>

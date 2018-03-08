@@ -24,7 +24,7 @@ export function UserService($resource) {
       return createResource.create({ id: user._id }, user).$promise;
     },
     deleteUser(user) {
-      let deleteResource = $resource('/api/users/', null,
+      let deleteResource = $resource('/api/users/:id', null,
         {
           delete: { method: 'DELETE' }
         });

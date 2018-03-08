@@ -8,7 +8,8 @@
       <h4 id="myModalLabel" class="modal-title">Are you sure you want to delete user?</h4>
     </div>
     <div class="modal-body">
-      <h4 id="myModalLabel" class="modal-title">{{deleteUserController.user.name.username}}</h4>
+      <h4 id="myModalLabel" class="modal-title">ID: {{deleteUserController.user._id}}</h4>
+      <h4 id="myModalLabel" class="modal-title">Username: {{deleteUserController.user.username}}</h4>
     </div>
     <div class="modal-footer">
       <button ng-click="deleteUserController.cancel()" type="button" class="btn btndefault">
@@ -16,4 +17,4 @@
       <button type="submit" class="btn btn-danger" ng-click="deleteUserController.submitForm()">Delete User</button>
     </div>
   </form>
-</div>
+  </div

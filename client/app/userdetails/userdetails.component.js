@@ -20,6 +20,16 @@ export class UserDetailsController {
       })
   }
 
+  updateUser(user) {
+    this.$uibModal.open({
+      template: require('../../components/updateUserModal/updateUserModal.html'),
+      controller: 'updateUserController as updateUserController',
+      resolve: {
+        user: () => user
+      }
+    })
+  }
+
   deleteUser(user) {
     this.$uibModal.open({
       template: require('../../components/deleteUserModal/deleteUserModal.html'),

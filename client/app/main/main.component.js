@@ -15,16 +15,6 @@ export class MainController {
     this.getReviewData();
   }
 
-  updateUser(user) {
-    this.$uibModal.open({
-      template: require('../../components/updateUserModal/updateUserModal.html'),
-      controller: 'updateUserController as updateUserController',
-      resolve: {
-        user: () => user
-      }
-    })
-  }
-
   createUser(user) {
     this.$uibModal.open({
       template: require('../../components/createUserModal/createUserModal.html'),

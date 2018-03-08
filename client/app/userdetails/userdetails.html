@@ -13,8 +13,8 @@
       <h4>Username: {{userDetailsController.user.username}}</h4>
       <h4>Email: {{userDetailsController.user.email}}</h4>
 
-      <div ng-init="user = userDetailsController.user"></div>
-      <button ng-click="userDetailsController.deleteUser(user)" type="button" class="btn btn-danger">Delete User</button>
+      <button ng-click="userDetailsController.updateUser(userDetailsController.user)" type="button" class="btn btn-default">Update User</button>
+      <button ng-click="userDetailsController.deleteUser(userDetailsController.user)" type="button" class="btn btn-danger">Delete User</button>
     </div>
   </div>
 </div>
